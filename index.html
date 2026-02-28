@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaPlay - Cloud Gaming Redefined</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-void: #050508;
+            --purple-cyber: #1a0b2e;
+            --neon-blue: #00f3ff;
+            --electric-pink: #ff00e6;
+            --text-main: rgba(255, 255, 255, 0.85);
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3,.brand-text {
+            font-family: var(--font-display);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 8, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+       .brand-text {
+            font-size: 1.8rem;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-blue);
+            font-weight: 800;
+        }
+
+       .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+       .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+       .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        /* Utility Classes */
+       .section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+       .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        /* Hero Section */
+       .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Animated Mesh Gradient Background */
+       .mesh-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.7;
+        }
+
+       .mesh-orb {
+            position: absolute;
+            border-radius: 50%;
+            animation: orb-drift 12s infinite alternate ease-in-out;
+        }
+
+       .orb-1 {
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--neon-blue), transparent 60%);
+            top: -10%; left: -10%;
+        }
+
+       .orb-2 {
+            width: 45vw; height: 45vw;
+            background: radial-gradient(circle, var(--electric-pink), transparent 60%);
+            bottom: -10%; right: -10%;
+            animation-delay: -3s;
+            animation-duration: 15s;
+        }
+
+       .orb-3 {
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, var(--purple-cyber), transparent 60%);
+            top: 20%; left: 20%;
+            animation-delay: -6s;
+        }
+
+        @keyframes orb-drift {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.2) translate(10%, -10%); }
+            100% { transform: scale(0.9) translate(-10%, 15%); }
+        }
+
+       .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+       .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+       .hero-content h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+        }
+
+       .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Neon Button */
+       .btn-neon {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            border-radius: 4px;
+            text-shadow: 0 0 0.125em rgba(255,255,255,0.3), 0 0 0.45em var(--neon-blue);
+            box-shadow: inset 0 0 0.5em 0 var(--neon-blue), 0 0 0.5em 0 var(--neon-blue);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+       .btn-neon:hover {
+            box-shadow: inset 0 0 1em 0 var(--neon-blue), 0 0 2em 0.5em var(--neon-blue);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Pricing Section */
+       .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+       .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        }
+
+       .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 243, 255, 0.2);
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+
+       .glass-card.pro {
+            border-color: rgba(255, 0, 230, 0.3);
+            background: linear-gradient(180deg, rgba(255, 0, 230, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+        }
+
+       .glass-card.pro:hover {
+            box-shadow: 0 15px 40px rgba(255, 0, 230, 0.2);
+            border-color: rgba(255, 0, 230, 0.5);
+        }
+
+       .glass-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+       .glass-card.price {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+       .glass-card.pro.price {
+            color: var(--electric-pink);
+            text-shadow: 0 0 15px rgba(255, 0, 230, 0.4);
+        }
+
+       .glass-card ul {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+       .glass-card ul li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Games Section */
+       .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+       .game-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #111;
+        }
+
+       .game-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 0.5s ease;
+        }
+
+       .game-card:hover.game-bg {
+            transform: scale(1.1);
+        }
+
+       .game-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(5, 5, 8, 0.95) 0%, rgba(5, 5, 8, 0) 60%);
+            z-index: 1;
+        }
+
+       .game-content {
+            position: relative;
+            z-index: 2;
+        }
+
+       .game-title {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+       .game-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+       .btn-play {
+            padding: 0.6rem 1.2rem;
+            background: var(--neon-blue);
+            color: var(--bg-void);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+       .btn-play:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+       .btn-explore {
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+       .btn-explore:hover {
+            transform: scale(1.05);
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--neon-blue);
+        }
+
+        /* Features Section */
+       .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+       .feature-item {
+            background: rgba(26, 11, 46, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+       .feature-item:hover {
+            border-color: rgba(255, 0, 230, 0.4);
+            background: rgba(26, 11, 46, 0.8);
+        }
+
+       .feature-icon {
+            font-size: 3rem;
+            color: var(--electric-pink);
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 230, 0.5));
+        }
+
+       .feature-item h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Scroll-driven Entrance Animations */
+        @media (prefers-reduced-motion: no-preference) {
+           .feature-item {
+                animation: slide-fade-up linear forwards;
+                animation-timeline: view();
+                animation-range: entry 10% cover 30%;
+            }
+        }
+
+        @keyframes slide-fade-up {
+            0% { transform: translateY(80px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background: #020204;
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+       .footer-tagline {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+       .social-icons {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+       .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+       .social-icons a:hover {
+            color: var(--electric-pink);
+            transform: scale(1.2);
+        }
+
+       .contact-form {
+            display: flex;
+            justify-content: center;
+            max-width: 400px;
+            margin: 0 auto 3rem;
+        }
+
+       .contact-form input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            color: #fff;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-family: var(--font-body);
+        }
+
+       .contact-form button {
+            background: var(--neon-blue);
+            color: var(--bg-void);
+            font-weight: 600;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.3s;
+        }
+
+       .contact-form button:hover {
+            background: #fff;
+        }
+
+       .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+           .nav-links { display: none; }
+           .section { padding: 4rem 5%; }
+           .glass-card { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="brand-text">NexaPlay</a>
+        <div class="nav-links">
+            <a href="#pricing">Pricing</a>
+            <a href="#games">Games</a>
+            <a href="#features">Features</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="mesh-container">
+            <div class="mesh-orb orb-1"></div>
+            <div class="mesh-orb orb-2"></div>
+            <div class="mesh-orb orb-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>NexaPlay – Cloud Gaming Redefined</h1>
+            <h2>Play AAA Games. Pay by the Hour.</h2>
+            <p>Skip the expensive hardware. Experience ultra-low latency, high-fidelity gaming directly from our edge-computing cloud. Affordable hourly rates calculated strictly in Indian Rupees (₹).</p>
+            <a href="#pricing" class="btn-neon">Start Playing Now</a>
+        </div>
+    </header>
+
+    <section id="pricing" class="section">
+        <h2 class="section-title">Access Plans</h2>
+        <div class="pricing-grid">
+            
+            <div class="glass-card">
+                <h3>Casual Gamer</h3>
+                <div class="price">₹99 <span style="font-size: 1.2rem; color: #fff; font-family: 'Rajdhani', sans-serif;">/ Hour</span></div>
+                <ul>
+                    <li>Standard Queue Priority</li>
+                    <li>1080p at 60 FPS</li>
+                    <li>Save Game Sync</li>
+                </ul>
+                <a href="#" class="btn-neon" style="font-size: 1rem; padding: 0.6rem 1.5rem;">Select Plan</a>
+            </div>
+
+            <div class="glass-card pro">
+                <h3>Pro Pack</h3>
+                <div class="price">₹249 <span style="font-size: 1.2rem; color: #fff; font-family: 'Rajdhani', sans-serif;">/ 3 Hours</span></div>
+                <ul>
+                    <li>High Queue Priority</li>
+                    <li>4K Resolution at 60 FPS</li>
+                    <li>Ray Tracing Enabled</li>
+                </ul>
+                <a href="#" class="btn-neon" style="font-size: 1rem; padding: 0.6rem 1.5rem; border-color: #ff00e6; text-shadow: none; box-shadow: inset 0 0 0.5em 0 #ff00e6, 0 0 0.5em 0 #ff00e6;">Select Plan</a>
+            </div>
+
+            <div class="glass-card">
+                <h3>Unlimited Access</h3>
+                <div class="price">₹699 <span style="font-size: 1.2rem; color: #fff; font-family: 'Rajdhani', sans-serif;">/ Day Pass</span></div>
+                <ul>
+                    <li>Instant Access (No Queue)</li>
+                    <li>4K Resolution at 120 FPS</li>
+                    <li>All DLCs Unlocked</li>
+                </ul>
+                <a href="#" class="btn-neon" style="font-size: 1rem; padding: 0.6rem 1.5rem;">Select Plan</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="games" class="section" style="background: rgba(0,0,0,0.3);">
+        <h2 class="section-title">Trending Titles</h2>
+        <div class="games-container">
+            
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk Game Placeholder" class="game-bg">
+                <div class="game-overlay"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Neon Protocol 2077</h3>
+                    <div class="game-actions">
+                        <button class="btn-play">Play Now</button>
+                        <button class="btn-explore">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Fantasy RPG Placeholder" class="game-bg">
+                <div class="game-overlay"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Elden Legacy</h3>
+                    <div class="game-actions">
+                        <button class="btn-play">Play Now</button>
+                        <button class="btn-explore">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80" alt="Action Shooter Placeholder" class="game-bg">
+                <div class="game-overlay"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Warzone Vanguard</h3>
+                    <div class="game-actions">
+                        <button class="btn-play">Play Now</button>
+                        <button class="btn-explore">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=800&q=80" alt="Sci-Fi Game Placeholder" class="game-bg">
+                <div class="game-overlay"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Galactic Front</h3>
+                    <div class="game-actions">
+                        <button class="btn-play">Play Now</button>
+                        <button class="btn-explore">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80" alt="Survival Action Placeholder" class="game-bg">
+                <div class="game-overlay"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Dead Zone Outbreak</h3>
+                    <div class="game-actions">
+                        <button class="btn-play">Play Now</button>
+                        <button class="btn-explore">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=800&q=80" alt="Racing Game Placeholder" class="game-bg">
+                <div class="game-overlay"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Apex Apex Speed</h3>
+                    <div class="game-actions">
+                        <button class="btn-play">Play Now</button>
+                        <button class="btn-explore">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <h2 class="section-title">Why Choose NexaPlay</h2>
+        <div class="features-grid">
+            
+            <div class="feature-item">
+                <i class="fa-solid fa-microchip feature-icon"></i>
+                <h3>No Expensive Hardware</h3>
+                <p>Leave the GPU upgrades to us. Play the latest titles natively on any device with a screen and an internet connection.</p>
+            </div>
+
+            <div class="feature-item">
+                <i class="fa-solid fa-server feature-icon"></i>
+                <h3>High-Speed Cloud Servers</h3>
+                <p>Located locally in India to ensure virtually zero-latency rendering and seamless video streaming directly to your screen.</p>
+            </div>
+
+            <div class="feature-item">
+                <i class="fa-solid fa-indian-rupee-sign feature-icon"></i>
+                <h3>Affordable Hourly ₹</h3>
+                <p>Pay exactly for what you play. Our transparent micro-transactional system charges in Indian Rupees without hidden fees.</p>
+            </div>
+
+            <div class="feature-item">
+                <i class="fa-solid fa-clock feature-icon"></i>
+                <h3>24/7 Access</h3>
+                <p>Our edge-computing infrastructure runs round the clock. Launch your saved games instantly at any time of day or night.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="brand-text footer-logo">NexaPlay</div>
+        <div class="footer-tagline">Level Up Instantly</div>
+        
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <div class="contact-form">
+            <input type="email" placeholder="Enter email for updates...">
+            <button type="submit">Subscribe</button>
+        </div>
+
+        <p class="copyright">&copy; 2026 NexaPlay India. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
